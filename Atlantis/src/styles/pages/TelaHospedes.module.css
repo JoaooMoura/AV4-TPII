@@ -1,0 +1,203 @@
+.pageWrapper {
+  padding: 32px 36px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: 100%;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headerTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  letter-spacing: -0.3px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--g6-color);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: #ffffff;
+  border: 1px solid var(--g2-color);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.08);
+}
+
+.statIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statIconTotal {
+  background-color: rgba(0, 74, 173, 0.08);
+  color: var(--azul-marinho);
+}
+
+.statIconAtivo {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.statIconReserva {
+  background-color: rgba(82, 185, 208, 0.12);
+  color: #0e7490;
+}
+
+.statIconCheckout {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--g5-color);
+  margin-top: 3px;
+}
+.tableCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.tableToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--g2-color);
+}
+
+.tableTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+}
+
+.countBadge {
+  background-color: var(--azul-marinho);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  line-height: 1.6;
+}
+
+.searchWrapper {
+  width: 320px;
+}
+
+.tableRow td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--g8-color);
+  vertical-align: middle;
+}
+
+.cellNome {
+  font-weight: 500;
+  color: var(--g9-color) !important;
+}
+
+.cellMuted {
+  color: var(--g5-color) !important;
+  font-size: 13px !important;
+}
+
+.quartoTag {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(0, 74, 173, 0.06);
+  color: var(--azul-marinho);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 74, 173, 0.12);
+}
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.status_ativo {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.status_checkout {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+}
+
+.status_reserva {
+  background-color: rgba(82, 185, 208, 0.12);
+  color: #0e7490;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 16px !important;
+  color: var(--g5-color);
+  font-size: 14px;
+}

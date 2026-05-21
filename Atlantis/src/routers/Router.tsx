@@ -3,7 +3,6 @@ import NotFound from "../pages/NotFound.page";
 import MainLayout from "../Layout/MainLayout";
 import { Inicio } from "../pages/inicio/Index";
 import { TelaHospedes } from "../pages/hospedes/Index";
-import { SearchBar } from "../components/ui/SearchBar";
 
 function Router() {
     return (
