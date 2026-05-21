@@ -1,0 +1,28 @@
+:root {
+    --roboto-font: 'Roboto', sans-serif;
+    --g1-color: #f7f7f7;
+    --g2-color: #DEDEDE;    
+    --g3-color: #CCCCCC;
+    --g4-color: #B2B2B2;
+    --g5-color: #9C9C9C;
+    --g6-color: #717171;
+    --g7-color: #404040;
+    --g8-color: #2E2E2E;
+    --g9-color: #202020;
+    --g10-color: #1C1C1C;
+    --azul-marinho: #004aad;
+    --azul-marinho-clareado: #004bad5e;
+    --verde-agua: #52b9d0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--roboto-font);
+}
+
+main {
+    min-height: 100dvh;
+    max-height: auto;
+}

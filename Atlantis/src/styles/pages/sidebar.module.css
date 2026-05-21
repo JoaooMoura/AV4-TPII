@@ -1,0 +1,94 @@
+.sidebar {
+    background-color: white;
+    color: var(--azul-marinho);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    border-right: 1px solid var(--azul-marinho-clareado);
+    position: relative;
+}
+
+.open {
+    width: 260px;
+}
+
+.closed {
+    width: 80px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 140px;
+    flex-shrink: 0;
+}
+
+.btn-boxMenu {
+    position: absolute;
+    top: 35px;
+    left: 100%;
+    margin-left: 15px;
+    background: none;
+    border: 1px solid var(--azul-marinho);
+    border-radius: 10px;
+    color: var(--azul-marinho);
+    cursor: pointer;
+    padding: 4px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-boxMenu:hover {
+    color: white;
+    background-color: var(--verde-agua);
+    border: 1px solid var(--verde-agua);
+}
+
+.Divisor {
+    border: none;
+    border-top: 1px solid var(--azul-marinho);
+    opacity: 40%;
+    margin: 0 10px;
+}
+
+
+
+.menu-nav {
+    flex: 1;
+    margin-top: 0;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.menu-item {
+    margin-top: 60px;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 0 2rem 2rem 0;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: var(--verde-agua);
+}
+
+.menu-text {
+    font-size: 16px;
+    font-weight: 500;
+}
