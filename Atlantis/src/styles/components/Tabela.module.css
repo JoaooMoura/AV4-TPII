@@ -1,0 +1,36 @@
+.tabelaContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabelaElement {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabelaHeader {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azul-marinho);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabelaElement tbody tr {
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+}
+
+.tabelaElement tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.tabelaElement thead td {
+    padding: 16px;
+    font-size: 15px;
+    color: #f8fafc;
+    vertical-align: middle;
+}
