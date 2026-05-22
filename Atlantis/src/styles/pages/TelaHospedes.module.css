@@ -101,7 +101,8 @@
   flex-direction: column;
   gap: 0;
   padding: 0 !important;
-  overflow: hidden;
+  overflow: auto;
+  min-height: 50%;
 }
 
 .tableToolbar {
@@ -133,7 +134,7 @@
 }
 
 .searchWrapper {
-  width: 320px;
+  width: 420px;
 }
 
 .tableRow td {
@@ -141,6 +142,7 @@
   font-size: 14px;
   color: var(--g8-color);
   vertical-align: middle;
+  
 }
 
 .cellNome {

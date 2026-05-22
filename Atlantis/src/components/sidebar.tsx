@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom"; // Importamos o NavLink
 import { Menu, Home, Users, Bed, Bell } from 'lucide-react'
-import styles from "../styles/pages/sidebar.module.css"
+import css from "../styles/pages/sidebar.module.css"
 
 interface MenuItem {
     id: number,
     title: string,
-    icon: React.ComponentType<{ size: number }>, 
-    path: string 
+    icon: React.ComponentType<{ size: number }>,
+    path: string
 }
 
 export function Sidebar() {
@@ -21,38 +21,39 @@ export function Sidebar() {
     ]
 
     return (
-        <aside className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}>
-            {/* botão de menu flutuante */}
-            <button className={styles["btn-boxMenu"]} onClick={() => setIsOpen(!isOpen)}>
-                <Menu size={24} />
-            </button>
+        <aside className={`${css.sidebar} ${isOpen ? css.open : css.closed}`}>
 
             {/* topo do sidebar*/}
-            <div className={styles['sidebar-header']}>
+            <div className={css['sidebar-header']}>
                 {isOpen ? (
-                    <img src="/assets/logo/Logo.svg" alt="Atlantis Resort" width={140} />
+                    <button className={css['logo-btn']}  onClick={() => setIsOpen(!isOpen)}>
+                        <img src="/assets/logo/Logo.svg" alt="Atlantis Resort" width={140} />
+                    </button>
                 ) : (
-                    <img src="/assets/logo/miniLogo.svg" alt="Atlantis Mini" width={40} />
+
+                    <button className={css['logo-btn']}  onClick={() => setIsOpen(!isOpen)}>
+                        <img src="/assets/logo/miniLogo.svg" alt="Atlantis Mini" width={40} />
+                    </button>
                 )}
+
             </div>
-            
-            {/* linha que separa*/}  
-            <hr className={styles["Divisor"]}/>
-            
+
+            {/* linha que separa*/}
+            <hr className={css["Divisor"]} />
+
             {/* menu da navegação*/}
-            <nav className={styles["menu-nav"]}>
-                <ul className={styles["menu-list"]}>
+            <nav className={css["menu-nav"]}>
+                <ul className={css["menu-list"]}>
                     {menuItems.map(({ id, title, icon: Icon, path }) => (
-                        // O NavLink agora abraça e gerencia a classe ativa
-                        <NavLink 
-                            key={id} 
-                            to={path} 
-                            className={({ isActive }) => 
-                                `${styles["menu-item"]} ${isActive ? styles.active : ''}`
+                        <NavLink
+                            key={id}
+                            to={path}
+                            className={({ isActive }) =>
+                                `${css["menu-item"]} ${isActive ? css.active : ''}`
                             }
                         >
                             <Icon size={24} />
-                            {isOpen && <span className={styles["menu-text"]}>{title}</span>}
+                            {isOpen && <span className={css["menu-text"]}>{title}</span>}
                         </NavLink>
                     ))}
                 </ul>

@@ -21,7 +21,8 @@
 
 .tabelaElement tbody tr {
     transition: background-color 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
 }
 
 .tabelaElement tbody tr:hover {
@@ -33,4 +34,5 @@
     font-size: 15px;
     color: #f8fafc;
     vertical-align: middle;
+    
 }

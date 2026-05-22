@@ -1,0 +1,283 @@
+.pageWrapper {
+  padding: 32px 36px;
+  min-height: 100%;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  letter-spacing: -0.3px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--g6-color);
+  margin-top: 4px;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filtroBotao {
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--g3-color);
+  background: #fff;
+  color: var(--g6-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtroBotao:hover {
+  border-color: var(--azul-marinho);
+  color: var(--azul-marinho);
+}
+
+.filtroAtivo {
+  background-color: var(--azul-marinho);
+  border-color: var(--azul-marinho);
+  color: #fff;
+}
+
+.filtroAtivo:hover {
+  color: #fff;
+}
+
+.conteudo {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  
+  margin-bottom: 2rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 2rem;
+}
+
+.acomCard {
+  background: #fff;
+  border: 1.5px solid var(--g2-color);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.acomCard:hover {
+  border-color: var(--azul-marinho);
+  box-shadow: 0 4px 14px rgba(0, 74, 173, 0.1);
+  transform: translateY(-2px);
+}
+
+.acomCardAtivo {
+  border-color: var(--azul-marinho);
+  background: rgba(0, 74, 173, 0.03);
+  box-shadow: 0 4px 14px rgba(0, 74, 173, 0.12);
+}
+
+.acomCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.acomNome {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  margin-bottom: 4px;
+}
+
+.acomDesc {
+  font-size: 12px;
+  color: var(--g5-color);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.acomIcons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.iconItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--g6-color);
+  background: var(--g1-color);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.categoriaBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.cat_solteiro {
+  background: rgba(82, 185, 208, 0.12);
+  color: #0e7490;
+}
+
+.cat_casal {
+  background: rgba(0, 74, 173, 0.08);
+  color: var(--azul-marinho);
+}
+
+.cat_familia {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+}
+
+.destaqueBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.detalhePanel {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1.5px solid var(--azul-marinho);
+  border-radius: 14px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+.detalheTopo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.fecharDetalhe {
+  background: none;
+  border: none;
+  color: var(--g5-color);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.fecharDetalhe:hover {
+  background: var(--g2-color);
+}
+
+.detalheNome {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  margin-bottom: 6px;
+}
+
+.detalheDesc {
+  font-size: 12px;
+  color: var(--g6-color);
+  line-height: 1.5;
+}
+
+.detalheSeparador {
+  border-top: 1px solid var(--g2-color);
+  margin: 14px 0;
+}
+
+.detalheItens {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detalheItens li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detalheLabel {
+  font-size: 13px;
+  color: var(--g6-color);
+}
+
+.detalheValor {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g8-color);
+}
+
+.sim {
+  color: #15803d;
+}
+
+.tabelaCard {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.tabelaTitulo {
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+  border-bottom: 1px solid var(--g2-color);
+}
+
+.tabelaCard td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--g7-color);
+  vertical-align: middle;
+}
+
+.cellNome {
+  font-weight: 600;
+  color: var(--azul-marinho) !important;
+}
+
+.simTag {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}

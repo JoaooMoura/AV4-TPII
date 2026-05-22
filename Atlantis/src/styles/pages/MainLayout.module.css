@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
     height: 100vh;
+    
 }
 
 .main {
@@ -8,4 +9,6 @@
     overflow: auto;
     padding: 32px 36px;
     background-color: #f4f6fb;
+    display: flex;
+    justify-content: center;
 }

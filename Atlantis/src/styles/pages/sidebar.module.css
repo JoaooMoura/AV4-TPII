@@ -6,7 +6,6 @@
     flex-direction: column;
     transition: width 0.3s ease;
     border-right: 1px solid var(--azul-marinho-clareado);
-    position: relative;
 }
 
 .open {
@@ -26,51 +25,32 @@
     flex-shrink: 0;
 }
 
-.btn-boxMenu {
-    position: absolute;
-    top: 35px;
-    left: 100%;
-    margin-left: 15px;
-    background: none;
-    border: 1px solid var(--azul-marinho);
-    border-radius: 10px;
-    color: var(--azul-marinho);
-    cursor: pointer;
-    padding: 4px;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease-in-out;
-}
-
-.btn-boxMenu:hover {
-    color: white;
-    background-color: var(--verde-agua);
-    border: 1px solid var(--verde-agua);
-}
 
 .Divisor {
     border: none;
     border-top: 1px solid var(--azul-marinho);
     opacity: 40%;
     margin: 0 10px;
+    margin-bottom: 4rem;
 }
 
 .menu-nav {
     flex: 1;
     margin-top: 0;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding-bottom: 20px;
 }
-
 .menu-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .menu-item {
-    margin-top: 60px;
     height: 60px;
     padding: 0 20px;
     display: flex;
@@ -91,4 +71,11 @@
 .menu-text {
     font-size: 16px;
     font-weight: 500;
+}
+.logo-btn{
+    background-color: transparent;
+    border:none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
 }

@@ -37,8 +37,6 @@ export function TelaHospedes() {
 
   return (
     <div className={css.pageWrapper}>
-
-      {/* ── Cabeçalho da página ── */}
       <header className={css.pageHeader}>
         <div className={css.headerTexts}>
           <h1 className={css.pageTitle}>Hóspedes</h1>
@@ -51,7 +49,6 @@ export function TelaHospedes() {
         </Botao>
       </header>
 
-      {/* ── Cards de estatísticas ── */}
       <div className={css.statsGrid}>
         <div className={css.statCard}>
           <div className={`${css.statIcon} ${css.statIconTotal}`}>
@@ -94,7 +91,6 @@ export function TelaHospedes() {
         </div>
       </div>
 
-      {/* ── Tabela principal ── */}
       <Card className={css.tableCard}>
         <div className={css.tableToolbar}>
           <div className={css.tableTitle}>
