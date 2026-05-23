@@ -3,47 +3,77 @@ import { Card } from "../../components/ui/Card";
 import { SearchBar } from "../../components/ui/SearchBar";
 import { Table } from "../../components/ui/Tabela";
 import { Botao } from "../../components/ui/Botao";
-import { Pencil, Trash2, Plus, Users, UserCheck, UserX, BedDouble } from "lucide-react";
+import { Pencil, Trash2, Plus, Users, UserCheck, UserX, BedDouble, ListTree } from "lucide-react";
+import { ModalCriarHospede } from "../../components/modais/ModalCriarHospede";
+import { ModalEditarHospede } from "../../components/modais/ModalEditarHospede";
+import { ModalDependentes } from "../../components/modais/ModalDependentes";
+import { Hospede } from "../../types/hospede";
+import { useAtlantis } from "../../context/AtlantisContext";
 import css from "../../styles/pages/TelaHospedes.module.css";
 
-const hospedesMock = [
-  { id: 1, nome: "João Silva",       cpf: "111.222.333-44", quarto: "104", status: "ativo",    checkin: "18/05/2026", checkout: "25/05/2026" },
-  { id: 2, nome: "Maria Oliveira",   cpf: "222.333.444-55", quarto: "201", status: "ativo",    checkin: "20/05/2026", checkout: "23/05/2026" },
-  { id: 3, nome: "Carlos Mendes",    cpf: "333.444.555-66", quarto: "305", status: "checkout", checkin: "15/05/2026", checkout: "21/05/2026" },
-  { id: 4, nome: "Ana Paula Costa",  cpf: "444.555.666-77", quarto: "102", status: "ativo",    checkin: "19/05/2026", checkout: "28/05/2026" },
-  { id: 5, nome: "Rafael Souza",     cpf: "555.666.777-88", quarto: "210", status: "reserva",  checkin: "22/05/2026", checkout: "26/05/2026" },
-  { id: 6, nome: "Fernanda Lima",    cpf: "666.777.888-99", quarto: "401", status: "ativo",    checkin: "17/05/2026", checkout: "24/05/2026" },
-  { id: 7, nome: "Lucas Pereira",    cpf: "777.888.999-00", quarto: "308", status: "checkout", checkin: "12/05/2026", checkout: "20/05/2026" },
-];
-
-const statusLabel: Record<string, string> = {
-  ativo:    "Hospedado",
-  checkout: "Check-out",
-  reserva:  "Reserva",
-};
+function formatarData(data: string) {
+  if (!data) return "—";
+  const [ano, mes, dia] = data.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
 
 export function TelaHospedes() {
   const [busca, setBusca] = useState("");
+  const [modalCriarAberto, setModalCriarAberto] = useState(false);
+  const [hospedeEmEdicao, setHospedeEmEdicao] = useState<Hospede | null>(null);
+  const [titularDependentes, setTitularDependentes] = useState<Hospede | null>(null);
 
-  const hospedesFiltrados = hospedesMock.filter((h) =>
-    h.nome.toLowerCase().includes(busca.toLowerCase()) ||
-    h.cpf.includes(busca) ||
-    h.quarto.includes(busca)
-  );
+  const {
+    hospedes,
+    titulares,
+    criarHospede,
+    editarHospede,
+    excluirHospede,
+    obterTitular,
+    listarDependentes,
+  } = useAtlantis();
 
-  const totalAtivos   = hospedesMock.filter((h) => h.status === "ativo").length;
-  const totalCheckout = hospedesMock.filter((h) => h.status === "checkout").length;
-  const totalReservas = hospedesMock.filter((h) => h.status === "reserva").length;
+  function excluir(id: number) {
+    const hospede = hospedes.find((item) => item.id === id);
+    if (!hospede) return;
+
+    const confirmar = window.confirm(`Excluir o hóspede ${hospede.nome}?`);
+    if (!confirmar) return;
+
+    const erro = excluirHospede(id);
+    if (erro) alert(erro);
+  }
+
+  const hospedesFiltrados = hospedes.filter((hospede) => {
+    const documento = hospede.documentos[0];
+    const telefone = hospede.telefones[0];
+    const titular = obterTitular(hospede);
+    const termo = busca.toLowerCase();
+
+    return (
+      hospede.nome.toLowerCase().includes(termo) ||
+      hospede.nomeSocial.toLowerCase().includes(termo) ||
+      documento?.numero.toLowerCase().includes(termo) ||
+      documento?.tipo.toLowerCase().includes(termo) ||
+      telefone?.numero.toLowerCase().includes(termo) ||
+      titular?.nome.toLowerCase().includes(termo)
+    );
+  });
+
+  const totalTitulares = titulares.length;
+  const totalDependentes = hospedes.filter((hospede) => hospede.titularId).length;
+  const totalDocumentos = hospedes.reduce((total, hospede) => total + hospede.documentos.length, 0);
+  const dependentesDoTitular = titularDependentes ? listarDependentes(titularDependentes.id) : [];
 
   return (
     <div className={css.pageWrapper}>
       <header className={css.pageHeader}>
         <div className={css.headerTexts}>
           <h1 className={css.pageTitle}>Hóspedes</h1>
-          <p className={css.pageSubtitle}>Gerencie os hóspedes e reservas do resort</p>
+          <p className={css.pageSubtitle}>Gerencie titulares, dependentes, documentos e contatos do resort</p>
         </div>
 
-        <Botao variant="primario" onClick={() => alert("Abrir modal de cadastro!")}>
+        <Botao variant="primario" onClick={() => setModalCriarAberto(true)}>
           <Plus size={18} />
           Novo Hóspede
         </Botao>
@@ -55,7 +85,7 @@ export function TelaHospedes() {
             <Users size={20} />
           </div>
           <div>
-            <p className={css.statValue}>{hospedesMock.length}</p>
+            <p className={css.statValue}>{hospedes.length}</p>
             <p className={css.statLabel}>Total de hóspedes</p>
           </div>
         </div>
@@ -65,28 +95,28 @@ export function TelaHospedes() {
             <UserCheck size={20} />
           </div>
           <div>
-            <p className={css.statValue}>{totalAtivos}</p>
-            <p className={css.statLabel}>Hospedados</p>
+            <p className={css.statValue}>{totalTitulares}</p>
+            <p className={css.statLabel}>Titulares</p>
           </div>
         </div>
 
         <div className={css.statCard}>
           <div className={`${css.statIcon} ${css.statIconReserva}`}>
-            <BedDouble size={20} />
+            <UserX size={20} />
           </div>
           <div>
-            <p className={css.statValue}>{totalReservas}</p>
-            <p className={css.statLabel}>Reservas</p>
+            <p className={css.statValue}>{totalDependentes}</p>
+            <p className={css.statLabel}>Dependentes</p>
           </div>
         </div>
 
         <div className={css.statCard}>
           <div className={`${css.statIcon} ${css.statIconCheckout}`}>
-            <UserX size={20} />
+            <BedDouble size={20} />
           </div>
           <div>
-            <p className={css.statValue}>{totalCheckout}</p>
-            <p className={css.statLabel}>Check-outs</p>
+            <p className={css.statValue}>{totalDocumentos}</p>
+            <p className={css.statLabel}>Documentos</p>
           </div>
         </div>
       </div>
@@ -98,37 +128,74 @@ export function TelaHospedes() {
             <span className={css.countBadge}>{hospedesFiltrados.length}</span>
           </div>
           <div className={css.searchWrapper}>
-            <SearchBar value={busca} onChange={setBusca} placeholder="Buscar por nome, CPF ou quarto…" />
+            <SearchBar value={busca} onChange={setBusca} placeholder="Buscar por nome, documento, telefone ou titular…" />
           </div>
         </div>
 
-        <Table cabecalho={["Hóspede", "CPF", "Quarto", "Status", "Check-in", "Check-out", "Ações"]}>
-          {hospedesFiltrados.map((hospede) => (
-            <tr key={hospede.id} className={css.tableRow}>
-              <td className={css.cellNome}>{hospede.nome}</td>
-              <td className={css.cellMuted}>{hospede.cpf}</td>
-              <td>
-                <span className={css.quartoTag}>Quarto {hospede.quarto}</span>
-              </td>
-              <td>
-                <span className={`${css.statusBadge} ${css[`status_${hospede.status}`]}`}>
-                  {statusLabel[hospede.status]}
-                </span>
-              </td>
-              <td className={css.cellMuted}>{hospede.checkin}</td>
-              <td className={css.cellMuted}>{hospede.checkout}</td>
-              <td>
-                <div className={css.actions}>
-                  <Botao variant="ghost" title="Editar" onClick={() => console.log("Editar", hospede.id)}>
-                    <Pencil size={16} />
-                  </Botao>
-                  <Botao variant="danger" title="Excluir" onClick={() => console.log("Excluir", hospede.id)}>
-                    <Trash2 size={16} />
-                  </Botao>
-                </div>
-              </td>
-            </tr>
-          ))}
+        <Table cabecalho={["Hóspede", "Documento", "Nascimento", "Tipo", "Titular", "Telefone", "Ações"]}>
+          {hospedesFiltrados.map((hospede) => {
+            const documento = hospede.documentos[0];
+            const telefone = hospede.telefones[0];
+            const titular = obterTitular(hospede);
+            const ehDependente = Boolean(hospede.titularId);
+            const totalDeps = listarDependentes(hospede.id).length;
+
+            return (
+              <tr key={hospede.id} className={css.tableRow}>
+                <td className={css.cellNome}>
+                  <div className={css.nomeWrapper}>
+                    <span>{hospede.nome}</span>
+                    {hospede.nomeSocial && <small>Nome social: {hospede.nomeSocial}</small>}
+                  </div>
+                </td>
+                <td>
+                  <div className={css.documentoCell}>
+                    <span className={css.documentoBadge}>{documento?.tipo ?? "—"}</span>
+                    <span className={css.cellMuted}>{documento?.numero ?? "—"}</span>
+                  </div>
+                </td>
+                <td className={css.cellMuted}>{formatarData(hospede.dataNascimento)}</td>
+                <td>
+                  <span className={`${css.tipoBadge} ${ehDependente ? css.tipoDependente : css.tipoTitular}`}>
+                    {ehDependente ? "Dependente" : "Titular"}
+                  </span>
+                </td>
+                <td className={css.cellMuted}>{titular?.nome ?? "—"}</td>
+                <td className={css.cellMuted}>{telefone ? `(${telefone.ddd}) ${telefone.numero}` : "—"}</td>
+                <td>
+                  <div className={css.actions}>
+                    {!ehDependente && (
+                      <Botao
+                        variant="ghost"
+                        className={`${css.actionButton} ${css.dependentesButton}`}
+                        title="Ver dependentes"
+                        onClick={() => setTitularDependentes(hospede)}
+                      >
+                        <ListTree size={16} />
+                        {totalDeps > 0 && <span className={css.actionCount}>{totalDeps}</span>}
+                      </Botao>
+                    )}
+                    <Botao
+                      variant="ghost"
+                      className={css.actionButton}
+                      title="Editar"
+                      onClick={() => setHospedeEmEdicao(hospede)}
+                    >
+                      <Pencil size={16} />
+                    </Botao>
+                    <Botao
+                      variant="danger"
+                      className={css.actionButton}
+                      title="Excluir"
+                      onClick={() => excluir(hospede.id)}
+                    >
+                      <Trash2 size={16} />
+                    </Botao>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
 
           {hospedesFiltrados.length === 0 && (
             <tr>
@@ -139,6 +206,28 @@ export function TelaHospedes() {
           )}
         </Table>
       </Card>
+
+      <ModalCriarHospede
+        aberto={modalCriarAberto}
+        onFechar={() => setModalCriarAberto(false)}
+        onSalvar={criarHospede}
+        titulares={titulares}
+      />
+
+      <ModalEditarHospede
+        aberto={Boolean(hospedeEmEdicao)}
+        hospede={hospedeEmEdicao}
+        titulares={titulares}
+        onFechar={() => setHospedeEmEdicao(null)}
+        onSalvar={editarHospede}
+      />
+
+      <ModalDependentes
+        aberto={Boolean(titularDependentes)}
+        titular={titularDependentes}
+        dependentes={dependentesDoTitular}
+        onFechar={() => setTitularDependentes(null)}
+      />
     </div>
   );
 }

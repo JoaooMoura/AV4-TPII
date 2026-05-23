@@ -1,6 +1,8 @@
 .pageWrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 32px 36px;
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -344,4 +346,25 @@
   padding: 16px 24px;
   border-top: 1px solid var(--g2-color);
   margin-top: 8px;
+}
+
+.pageWrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .pageWrapper {
+    padding: 24px 18px;
+  }
+
+  .pageHeader,
+  .tableToolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
 }

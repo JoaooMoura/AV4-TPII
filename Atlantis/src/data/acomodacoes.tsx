@@ -1,6 +1,6 @@
-import React from "react";
+import { Acomodacao } from "../types/hospede";
 
-export const acomodacoes = [
+export const acomodacoesIniciais: Acomodacao[] = [
   {
     id: 1,
     nome: "Solteiro Simples",
@@ -68,3 +68,4 @@ export const acomodacoes = [
     categoria: "familia",
   },
 ];
+export const acomodacoes = acomodacoesIniciais;

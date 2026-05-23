@@ -3,6 +3,8 @@ import NotFound from "../pages/NotFound.page";
 import MainLayout from "../Layout/MainLayout";
 import { Inicio } from "../pages/inicio/Index";
 import { TelaHospedes } from "../pages/hospedes/Index";
+import { TelaAcomodacoes } from "../pages/acomodacao/Index";
+import { TelaHospedagem } from "../pages/hospedagem/Index";
 
 function Router() {
     return (
@@ -12,8 +14,8 @@ function Router() {
                     <Route index element={<Inicio/>}/> 
                     <Route path="inicio" element={<Inicio />} />
                     <Route path="hospedes" element={<TelaHospedes />} /> 
-                    <Route path="acomodacoes" element={<Inicio />} />
-                    <Route path="hospedagem" element={<Inicio />} />
+                    <Route path="acomodacoes" element={<TelaAcomodacoes/>} />
+                    <Route path="hospedagem" element={<TelaHospedagem />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Switch>

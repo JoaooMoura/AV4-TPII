@@ -1,38 +1,39 @@
 .tabelaContainer {
-    width: 100%;
-    overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .tabelaElement {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  text-align: left;
 }
 
 .tabelaHeader {
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--azul-marinho);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  border-bottom: 1px solid var(--g2-color);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
 }
 
 .tabelaElement tbody tr {
-    transition: background-color 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var(--g2-color);
 }
 
 .tabelaElement tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(0, 74, 173, 0.03);
 }
 
-.tabelaElement thead td {
-    padding: 16px;
-    font-size: 15px;
-    color: #f8fafc;
-    vertical-align: middle;
-    
+
+.tabelaElement th:last-child,
+.tabelaElement td:last-child {
+  text-align: right;
+  white-space: nowrap;
 }

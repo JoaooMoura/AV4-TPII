@@ -1,0 +1,175 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.blocoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.blocoTitulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+}
+
+.blocoDescricao {
+  font-size: 12px;
+  color: var(--g5-color);
+}
+
+.tipoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.tipoCard {
+  border: 1.5px solid var(--g2-color);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tipoCard:hover:not(:disabled) {
+  border-color: var(--azul-marinho);
+  background: rgba(0, 74, 173, 0.02);
+}
+
+.tipoCard:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tipoCardAtivo {
+  border-color: var(--azul-marinho);
+  background: rgba(0, 74, 173, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 74, 173, 0.08);
+}
+
+.tipoTitulo {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--g8-color);
+  margin-bottom: 4px;
+}
+
+.tipoDescricao {
+  display: block;
+  font-size: 12px;
+  color: var(--g5-color);
+  line-height: 1.35;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 1fr;
+  gap: 12px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--g7-color);
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--g2-color);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--g8-color);
+  font-size: 13px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--azul-marinho);
+  box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.08);
+}
+
+.input:disabled,
+.select:disabled {
+  background: var(--g1-color);
+  color: var(--g5-color);
+  cursor: not-allowed;
+}
+
+.infoBox {
+  border: 1px solid rgba(82, 185, 208, 0.28);
+  background: rgba(82, 185, 208, 0.08);
+  color: var(--g7-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.infoBox strong {
+  color: var(--azul-marinho);
+}
+
+.erro {
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  background: rgba(239, 68, 68, 0.08);
+  color: #b91c1c;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .tipoGrid,
+  .grid2,
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkboxInline {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--g7-color);
+  font-size: 13px;
+  font-weight: 600;
+  padding-top: 22px;
+}
+
+.checkboxInline input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--azul-marinho);
+}

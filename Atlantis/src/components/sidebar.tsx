@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom"; // Importamos o NavLink
-import { Menu, Home, Users, Bed, Bell } from 'lucide-react'
+import { NavLink } from "react-router-dom"; 
+import { Home, Users, Bed, Bell } from 'lucide-react'
 import css from "../styles/pages/sidebar.module.css"
 
 interface MenuItem {
@@ -23,7 +23,6 @@ export function Sidebar() {
     return (
         <aside className={`${css.sidebar} ${isOpen ? css.open : css.closed}`}>
 
-            {/* topo do sidebar*/}
             <div className={css['sidebar-header']}>
                 {isOpen ? (
                     <button className={css['logo-btn']}  onClick={() => setIsOpen(!isOpen)}>
@@ -38,10 +37,8 @@ export function Sidebar() {
 
             </div>
 
-            {/* linha que separa*/}
             <hr className={css["Divisor"]} />
 
-            {/* menu da navegação*/}
             <nav className={css["menu-nav"]}>
                 <ul className={css["menu-list"]}>
                     {menuItems.map(({ id, title, icon: Icon, path }) => (

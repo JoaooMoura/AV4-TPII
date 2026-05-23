@@ -1,6 +1,12 @@
 .pageWrapper {
-  padding: 32px 36px;
-  min-height: 100%;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 36px 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .pageHeader {
@@ -27,7 +33,6 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
 .filtroBotao {
@@ -58,20 +63,17 @@
 }
 
 .conteudo {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: start;
 }
 
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 14px;
-  flex: 1;
   min-width: 0;
-  margin-bottom: 2rem;
 }
 
 .acomCard {
@@ -83,6 +85,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   width: 100%;
+  min-height: 136px;
 }
 
 .acomCard:hover {
@@ -99,8 +102,9 @@
 
 .acomCardHeader {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
@@ -140,6 +144,7 @@
   font-weight: 600;
   padding: 3px 9px;
   border-radius: 20px;
+  white-space: nowrap;
 }
 
 .cat_solteiro {
@@ -157,6 +162,25 @@
   color: #15803d;
 }
 
+.badgeGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ocupadaBadge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
 .destaqueBadge {
   display: inline-flex;
   align-items: center;
@@ -170,14 +194,14 @@
 }
 
 .detalhePanel {
-  width: 260px;
-  flex-shrink: 0;
+  width: 100%;
   background: #fff;
   border: 1.5px solid var(--azul-marinho);
   border-radius: 14px;
   padding: 20px;
-  position: sticky;
-  top: 20px;
+  position: static;
+  max-height: none;
+  overflow: visible;
 }
 
 .detalheTopo {
@@ -231,6 +255,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .detalheLabel {
@@ -248,9 +273,23 @@
   color: #15803d;
 }
 
+.detalheActions,
+.tabelaActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detalheActions {
+  margin-top: 18px;
+}
+
 .tabelaCard {
   padding: 0 !important;
   overflow: hidden;
+  width: 100%;
+  min-width: 0;
 }
 
 .tabelaTitulo {
@@ -261,11 +300,18 @@
   border-bottom: 1px solid var(--g2-color);
 }
 
+.tabelaScroll {
+  width: 100%;
+  max-height: 360px;
+  overflow: auto;
+}
+
 .tabelaCard td {
   padding: 12px 16px;
   font-size: 14px;
   color: var(--g7-color);
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .cellNome {
@@ -280,4 +326,42 @@
   font-weight: 600;
   padding: 3px 10px;
   border-radius: 20px;
+}
+
+.naoTag {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+@media (max-width: 1120px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .pageWrapper {
+    padding: 24px 18px 40px;
+  }
+
+  .pageHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabelaScroll {
+    max-height: 320px;
+  }
 }

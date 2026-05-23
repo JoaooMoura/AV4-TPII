@@ -1,11 +1,7 @@
-import css from "../styles/pages/home.module.css"
+import { Dashboard } from "./inicio/Dashboard";
 
 function HomePage() {
-    return (
-        <main className={css.main}>
-            <h1>Hello World!</h1>
-        </main>
-    )
+  return <Dashboard />;
 }
 
-export default HomePage
+export default HomePage;

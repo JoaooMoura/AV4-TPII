@@ -8,7 +8,7 @@ interface TabelaProps{
 
 export function Table({cabecalho, children}: TabelaProps){
     return(
-        <div className={css.tableContainer}>
+        <div className={css.tabelaContainer}>
             <table className={css.tabelaElement}>
                 <thead>
                     <tr>

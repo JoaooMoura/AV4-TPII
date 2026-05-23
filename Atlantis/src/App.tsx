@@ -1,17 +1,17 @@
 import { Helmet } from "react-helmet";
 import Router from "./routers/Router";
-import "./styles/global.css"
-import { Sidebar } from "./components/sidebar";
+import { AtlantisProvider } from "./context/AtlantisContext";
+import "./styles/global.css";
 
 function App() {
   return (
-    <div>
+    <AtlantisProvider>
       <Helmet>
-        <title>Título da Página</title>
-        <meta name="description" content="Minha descrição personalizada." />
+        <title>Atlantis Resort</title>
+        <meta name="description" content="Protótipo SPA do sistema Atlantis." />
       </Helmet>
       <Router />
-    </div>
+    </AtlantisProvider>
   );
 }
 

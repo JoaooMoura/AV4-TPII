@@ -22,7 +22,15 @@
     font-family: var(--roboto-font);
 }
 
+html, body, #root {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background-color: #f4f6fb;
+}
+
 main {
     min-height: 100dvh;
-    max-height: auto;
 }

@@ -1,10 +1,6 @@
-import React from "react"
-
+import React from "react";
+import { Dashboard } from "./Dashboard";
 
 export function Inicio() {
-    return (
-        <div>
-           hello
-        </div>
-    )
+  return <Dashboard />;
 }

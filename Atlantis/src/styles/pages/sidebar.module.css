@@ -79,3 +79,13 @@
     cursor: pointer;
     outline: none;
 }
+.active {
+    background-color: var(--azul-marinho);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(0, 74, 173, 0.18);
+}
+
+.active:hover {
+    background-color: var(--azul-marinho);
+    color: #fff;
+}
