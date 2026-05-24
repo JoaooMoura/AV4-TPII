@@ -5,6 +5,7 @@ import { Inicio } from "../pages/inicio/Index";
 import { TelaHospedes } from "../pages/hospedes/Index";
 import { TelaAcomodacoes } from "../pages/acomodacao/Index";
 import { TelaHospedagem } from "../pages/hospedagem/Index";
+import { Paysandu } from "../pages/inicio/Paysandu";
 
 function Router() {
     return (
@@ -16,6 +17,7 @@ function Router() {
                     <Route path="hospedes" element={<TelaHospedes />} /> 
                     <Route path="acomodacoes" element={<TelaAcomodacoes/>} />
                     <Route path="hospedagem" element={<TelaHospedagem />} />
+                    <Route path="paysandu" element={<Paysandu />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Switch>

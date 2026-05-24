@@ -1,0 +1,12 @@
+.page {
+  width: 100%;
+  min-height: 100%;
+  padding: 32px;
+}
+.video {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 14px;
+  background: #000000;
+}

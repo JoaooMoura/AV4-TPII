@@ -26,7 +26,7 @@ const acoesRapidas = [
   {
     titulo: "Registrar hospedagem",
     descricao: "Vincule hóspedes cadastrados a uma acomodação disponível.",
-    rota: "/hospedagem",
+    rota: "/paysandu",
     icone: ClipboardList,
   },
 ];
@@ -65,7 +65,6 @@ export function Dashboard() {
     <div className={css.pageWrapper}>
       <section className={css.heroContent}>
         <div>
-          <span className={css.heroBadge}>Ocean Solutions</span>
           <h1 className={css.heroTitle}>Atlantis Resort</h1>
           <p className={css.heroResumo}>
             {hospedes.length} hóspede(s), {acomodacoes.length} acomodação(ões) e {hospedagens.length} hospedagem(ns) ativa(s).
